@@ -59,8 +59,8 @@ keys = [
     Key([mod], "Return", lazy.spawn(commands["terminal"]),
         desc="Launch terminal"),
 
-    # Emacs
-    Key([mod], "n", lazy.spawn(commands["nvim"]),
+    # Nvim
+    Key([mod, "shift"], "n", lazy.spawn(commands["nvim"]),
         desc="Launch nvim client"),
 
     # Rofi

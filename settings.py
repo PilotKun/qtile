@@ -6,6 +6,16 @@ USER_HOME = os.path.expanduser("~")
 volume_step = 5
 brightness_step = 5
 
+# Fonts
+font_family = "JetBrainsMono Nerd Font Propo Bold"
+font_size = 12
+font_prompt = "Ubuntu Mono"   # used by widget.Prompt, which had its own font
+font_prompt_size = 11
+
+# Wallpaper
+WALLPAPERS_PATH = f"{USER_HOME}/Pictures/walls/"
+WALLPAPER_TIMEOUT_MINUTES = 60   # change wallpaper every 60 minutes
+
 commands = dict(
     terminal="alacritty",
     nvim="nvim",

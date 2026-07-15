@@ -5,17 +5,11 @@ import os
 import subprocess
 
 # init settings
-from settings import mod, terminal, commands, USER_HOME, volume_step, brightness_step
+from settings import mod, terminal, commands, USER_HOME, volume_step, brightness_step, font_family, font_size, font_prompt, font_prompt_size, WALLPAPERS_PATH
 # init keybindings
 from key_conf import keys, mouse
-
-widget_defaults = dict(
-    font="JetBrainsMono Nerd Font Propo Bold",
-    fontsize=12,
-    padding=0,
-    background=colors[0],
-)
-
+# init wallpaper
+import wallpaper 
 extension_defaults = widget_defaults.copy()
 
 sep = widget.Sep(linewidth=1, padding=8, foreground=colors[9])
@@ -26,8 +20,8 @@ screens = [
             widgets = [
                 widget.Spacer(length = 8),
                 widget.Prompt(
-                    font = "Ubuntu Mono",
-                    fontsize=11,
+                    font = font_prompt,
+                    fontsize=font_size,
                     foreground = colors[1]
                 ),
                 widget.GroupBox(
@@ -139,35 +133,6 @@ screens = [
         ),
     ),
 ]
-
-# Drag floating layouts.
-mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front()),
-]
-
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
-follow_mouse_focus = True
-bring_front_click = False
-floats_kept_above = True
-cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
-auto_fullscreen = True
-focus_on_window_activation = "smart"
-reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
